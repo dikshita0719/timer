@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f0e8" />
+    <meta name="description" content="A precise local clock with an expressive visual moodboard." />
+    <title>Clockwork - Local time, your way</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-theme="kawaii">
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="Clockwork home">
+          <span class="brand-mark" aria-hidden="true"><span></span></span>
+          <span>clockwork</span>
+        </a>
+        <div class="topbar-meta">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Local time</span>
+          <span class="meta-divider" aria-hidden="true"></span>
+          <span id="today-label">Tuesday, September 24</span>
+        </div>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <div class="eyebrow"><span class="eyebrow-line"></span> Your time, your atmosphere</div>
+          <h1 id="page-title">Time, with a<br /><em>little personality.</em></h1>
+          <p class="intro-copy">An exact local clock dressed in a look that feels like yours. Pick a mood and let the minutes settle in.</p>
+        </section>
+
+        <section class="workspace" aria-label="Clock and appearance controls">
+          <article class="clock-card">
+            <div class="card-topline">
+              <span class="location-label"><span class="location-pin" aria-hidden="true"></span> Your local time</span>
+              <span class="live-label"><span class="live-pulse" aria-hidden="true"></span> Live</span>
+            </div>
+            <div class="clock-face" aria-live="polite">
+              <div class="clock-time"><span id="hours">09</span><span class="time-colon">:</span><span id="minutes">24</span><span class="time-seconds"><span id="seconds">07</span></span></div>
+              <div class="clock-date"><span id="long-date">Tuesday, September 24, 2026</span><span class="date-divider">/</span><span id="timezone">Local time</span></div>
+            </div>
+            <div class="clock-footer">
+              <div class="precision-note"><span class="check-icon" aria-hidden="true">+</span><span>Synced to this device</span></div>
+              <span class="format-label">24-hour format</span>
+            </div>
+          </article>
+
+          <aside class="appearance-panel" aria-labelledby="appearance-title">
+            <div class="panel-heading">
+              <div>
+                <p class="section-kicker">Make it yours</p>
+                <h2 id="appearance-title">Choose a mood</h2>
+              </div>
+              <span class="palette-icon" aria-hidden="true"></span>
+            </div>
+            <div class="theme-list" role="group" aria-label="Clock appearance themes">
+              <button class="theme-option is-active" type="button" data-theme-choice="kawaii" aria-pressed="true">
+                <span class="theme-swatch swatch-kawaii" aria-hidden="true"><span></span></span>
+                <span class="theme-copy"><strong>Kawaii daydream</strong><small>Soft, sweet &amp; sunny</small></span>
+                <span class="theme-check" aria-hidden="true">+</span>
+              </button>
+              <button class="theme-option" type="button" data-theme-choice="noir" aria-pressed="false">
+                <span class="theme-swatch swatch-noir" aria-hidden="true"><span></span></span>
+                <span class="theme-copy"><strong>Midnight noir</strong><small>Quiet, cinematic &amp; cool</small></span>
+                <span class="theme-check" aria-hidden="true">+</span>
+              </button>
+              <button class="theme-option" type="button" data-theme-choice="botanical" aria-pressed="false">
+                <span class="theme-swatch swatch-botanical" aria-hidden="true"><span></span></span>
+                <span class="theme-copy"><strong>Botanical studio</strong><small>Grounded, fresh &amp; calm</small></span>
+                <span class="theme-check" aria-hidden="true">+</span>
+              </button>
+              <button class="theme-option" type="button" data-theme-choice="sunset" aria-pressed="false">
+                <span class="theme-swatch swatch-sunset" aria-hidden="true"><span></span></span>
+                <span class="theme-copy"><strong>Soft sunset</strong><small>Warm, glowing &amp; mellow</small></span>
+                <span class="theme-check" aria-hidden="true">+</span>
+              </button>
+              <button class="theme-option" type="button" data-theme-choice="ocean" aria-pressed="false">
+                <span class="theme-swatch swatch-ocean" aria-hidden="true"><span></span></span>
+                <span class="theme-copy"><strong>Ocean air</strong><small>Clear, airy &amp; open</small></span>
+                <span class="theme-check" aria-hidden="true">+</span>
+              </button>
+            </div>
+            <div class="panel-note"><span class="spark-icon" aria-hidden="true">*</span><span>The clock keeps ticking while you explore.</span></div>
+          </aside>
+        </section>
+
+        <section class="details-row" aria-label="Clock details">
+          <div class="detail-item"><span class="detail-index">01</span><div><strong>Always accurate</strong><p>Reads the system time directly, down to the second.</p></div></div>
+          <div class="detail-item"><span class="detail-index">02</span><div><strong>Private by nature</strong><p>Everything runs in your browser. Nothing leaves your device.</p></div></div>
+          <div class="detail-item"><span class="detail-index">03</span><div><strong>Made for focus</strong><p>A calm glanceable display for desks, walls, and tabs.</p></div></div>
+        </section>
+      </main>
+
+      <footer class="footer"><span>clockwork / 2026</span><span>Local by design <span class="footer-star" aria-hidden="true">*</span></span></footer>
+    </div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

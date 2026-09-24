@@ -39,9 +39,9 @@ const modeDetails = {
 };
 
 const state = {
-  mode: localStorage.getItem("clockwork-mode") || "timer",
-  timerDuration: Number(localStorage.getItem("clockwork-duration")) || 1500,
-  timerRemaining: Number(localStorage.getItem("clockwork-duration")) * 1000 || 1500000,
+  mode: getSavedValue("clockwork-mode") || "timer",
+  timerDuration: Number(getSavedValue("clockwork-duration")) || 1500,
+  timerRemaining: Number(getSavedValue("clockwork-duration")) * 1000 || 1500000,
   timerRunning: false,
   timerEndAt: 0,
   stopwatchElapsed: 0,
@@ -49,6 +49,21 @@ const state = {
   stopwatchRunning: false,
   laps: [],
 };
+
+function getSavedValue(key) {
+  try {
+    return window.localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function saveValue(key, value) {
+  try {
+    window.localStorage.setItem(key, value);
+  } catch {
+  }
+}
 
 function pad(value) {
   return String(value).padStart(2, "0");
@@ -93,12 +108,12 @@ function setTheme(theme) {
     button.classList.toggle("is-active", isActive);
     button.setAttribute("aria-pressed", String(isActive));
   });
-  localStorage.setItem("clockwork-theme", theme);
+  saveValue("clockwork-theme", theme);
 }
 
 function setMode(mode) {
   state.mode = mode;
-  localStorage.setItem("clockwork-mode", mode);
+  saveValue("clockwork-mode", mode);
   modeButtons.forEach((button) => {
     const isActive = button.dataset.modeChoice === mode;
     button.classList.toggle("is-active", isActive);
@@ -119,7 +134,7 @@ function setTimerDuration(seconds) {
   state.timerRemaining = seconds * 1000;
   state.timerRunning = false;
   state.timerEndAt = 0;
-  localStorage.setItem("clockwork-duration", String(seconds));
+  saveValue("clockwork-duration", String(seconds));
   presetButtons.forEach((button) => button.classList.toggle("is-selected", Number(button.dataset.duration) === seconds));
   customMinutesInput.value = "";
   render();
@@ -249,7 +264,7 @@ focusToggle.addEventListener("click", toggleTimer);
 exitFocusButton.addEventListener("click", exitFocusMode);
 document.addEventListener("fullscreenchange", () => { if (document.fullscreenElement !== focusStage && !document.body.classList.contains("focus-fallback")) focusStage.hidden = true; });
 
-const savedTheme = localStorage.getItem("clockwork-theme");
+const savedTheme = getSavedValue("clockwork-theme");
 setTheme(savedTheme && themeNames[savedTheme] ? savedTheme : "pixel");
 setMode(modeDetails[state.mode] ? state.mode : "timer");
 updateClock();

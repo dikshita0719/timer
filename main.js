@@ -31,7 +31,7 @@ const presetButtons = document.querySelectorAll("[data-duration]");
 const timeFormatter = new Intl.DateTimeFormat(undefined, { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
 const dateFormatter = new Intl.DateTimeFormat(undefined, { weekday: "long", month: "long", day: "numeric", year: "numeric" });
 const timezoneFormatter = new Intl.DateTimeFormat(undefined, { timeZoneName: "short" });
-const themeNames = { kawaii: "Kawaii daydream", noir: "Midnight noir", botanical: "Botanical studio", sunset: "Soft sunset", ocean: "Ocean air" };
+const themeNames = { pixel: "Pixel arcade", noir: "Midnight noir", botanical: "Botanical studio", sunset: "Soft sunset", ocean: "Ocean air" };
 const modeDetails = {
   timer: { kicker: "Deep work interval", title: "Focus timer" },
   stopwatch: { kicker: "Track the moment", title: "Stopwatch" },
@@ -87,7 +87,7 @@ function updateClock() {
 
 function setTheme(theme) {
   document.body.dataset.theme = theme;
-  focusThemeLabel.textContent = themeNames[theme] || themeNames.kawaii;
+  focusThemeLabel.textContent = themeNames[theme] || themeNames.pixel;
   themeButtons.forEach((button) => {
     const isActive = button.dataset.themeChoice === theme;
     button.classList.toggle("is-active", isActive);
@@ -250,7 +250,7 @@ exitFocusButton.addEventListener("click", exitFocusMode);
 document.addEventListener("fullscreenchange", () => { if (document.fullscreenElement !== focusStage && !document.body.classList.contains("focus-fallback")) focusStage.hidden = true; });
 
 const savedTheme = localStorage.getItem("clockwork-theme");
-setTheme(savedTheme && themeNames[savedTheme] ? savedTheme : "kawaii");
+setTheme(savedTheme && themeNames[savedTheme] ? savedTheme : "pixel");
 setMode(modeDetails[state.mode] ? state.mode : "timer");
 updateClock();
 render();

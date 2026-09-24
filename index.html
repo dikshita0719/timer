@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f5f0e8" />
+    <meta name="theme-color" content="#d9eef4" />
     <meta name="description" content="A local clock, timer, and stopwatch with expressive visual moods." />
     <title>Clockwork - Time, your way</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body data-theme="kawaii">
+  <body data-theme="pixel">
     <div class="page-shell">
       <header class="topbar">
         <a class="brand" href="./" aria-label="Clockwork home">
@@ -31,7 +31,6 @@
         <section class="intro" aria-labelledby="page-title">
           <div class="eyebrow"><span class="eyebrow-line"></span> Time, your atmosphere</div>
           <h1 id="page-title">Make time<br /><em>feel yours.</em></h1>
-          <p class="intro-copy">A calm timer for deep work, a stopwatch for momentum, and your exact local clock when you need a glance.</p>
         </section>
 
         <section class="workspace" aria-label="Time tools and appearance controls">
@@ -83,9 +82,9 @@
               <span class="palette-icon" aria-hidden="true"></span>
             </div>
             <div class="theme-list" role="group" aria-label="Clock appearance themes">
-              <button class="theme-option is-active" type="button" data-theme-choice="kawaii" aria-pressed="true">
-                <span class="theme-swatch swatch-kawaii" aria-hidden="true"><span></span></span>
-                <span class="theme-copy"><strong>Kawaii daydream</strong><small>Soft, sweet &amp; sunny</small></span>
+              <button class="theme-option is-active" type="button" data-theme-choice="pixel" aria-pressed="true">
+                <span class="theme-swatch swatch-pixel" aria-hidden="true"><span></span></span>
+                <span class="theme-copy"><strong>Pixel arcade</strong><small>Bright, playful &amp; game-like</small></span>
                 <span class="theme-check" aria-hidden="true">+</span>
               </button>
               <button class="theme-option" type="button" data-theme-choice="noir" aria-pressed="false">
@@ -113,11 +112,6 @@
           </aside>
         </section>
 
-        <section class="details-row" aria-label="Time tool details">
-          <div class="detail-item"><span class="detail-index">01</span><div><strong>Focus without fuss</strong><p>Preset or custom intervals with one clear start button.</p></div></div>
-          <div class="detail-item"><span class="detail-index">02</span><div><strong>Share just the timer</strong><p>Open a clean fullscreen stage for screen sharing or a desk display.</p></div></div>
-          <div class="detail-item"><span class="detail-index">03</span><div><strong>Private by nature</strong><p>Everything runs in your browser and stays on this device.</p></div></div>
-        </section>
       </main>
 
       <footer class="footer"><span>clockwork / 2026</span><span>Local by design <span class="footer-star" aria-hidden="true">*</span></span></footer>
@@ -125,7 +119,7 @@
     <section class="focus-stage" id="focus-stage" aria-label="Fullscreen focus timer" hidden>
       <div class="focus-stage-topline"><span class="brand-mark" aria-hidden="true"><span></span></span><span>clockwork / focus</span><button id="exit-focus-button" type="button" title="Exit focus view"><span class="close-glyph" aria-hidden="true"></span><span>Exit</span></button></div>
       <div class="focus-stage-center"><p>FOCUS TIMER</p><div id="focus-display">25:00</div><span id="focus-status">Ready when you are</span><button class="focus-stage-toggle" id="focus-toggle" type="button">Start timer</button></div>
-      <div class="focus-stage-bottom"><span>Local only</span><span id="focus-theme-label">Kawaii daydream</span></div>
+      <div class="focus-stage-bottom"><span>Local only</span><span id="focus-theme-label">Pixel arcade</span></div>
     </section>
     <script type="module" src="./main.js"></script>
   </body>

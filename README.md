@@ -11,7 +11,7 @@ Open `index.html` directly in a browser. No install or server is required.
 - Focus timer with 5, 15, 25, and 45 minute presets plus custom durations.
 - Stopwatch with lap recording and pause/reset controls.
 - Reads the computer's local system time with the browser `Date` API and refreshes every second.
-- Five visual moods: Kawaii daydream, Midnight noir, Botanical studio, Soft sunset, and Ocean air.
+- Five visual moods: Pixel arcade, Midnight noir, Botanical studio, Soft sunset, and Ocean air.
 - Remembers the selected mood locally in `localStorage`.
 - Fullscreen focus view that presents only the timer for screen sharing or a desk display.
 - Responsive desktop and mobile layout.

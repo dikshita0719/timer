@@ -26,6 +26,8 @@ const focusThemeLabel = document.querySelector("#focus-theme-label");
 const focusToggle = document.querySelector("#focus-toggle");
 const exitFocusButton = document.querySelector("#exit-focus-button");
 const customMinutesInput = document.querySelector("#custom-minutes");
+const customDurationField = document.querySelector(".custom-duration");
+const customTab = document.querySelector("#custom-tab");
 const presetButtons = document.querySelectorAll("[data-duration]");
 
 const timeFormatter = new Intl.DateTimeFormat(undefined, { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
@@ -136,8 +138,19 @@ function setTimerDuration(seconds) {
   state.timerEndAt = 0;
   saveValue("clockwork-duration", String(seconds));
   presetButtons.forEach((button) => button.classList.toggle("is-selected", Number(button.dataset.duration) === seconds));
+  customTab.classList.remove("is-selected");
+  customTab.setAttribute("aria-pressed", "false");
+  customDurationField.hidden = true;
   customMinutesInput.value = "";
   render();
+}
+
+function openCustomDuration() {
+  presetButtons.forEach((button) => button.classList.remove("is-selected"));
+  customTab.classList.add("is-selected");
+  customTab.setAttribute("aria-pressed", "true");
+  customDurationField.hidden = false;
+  customMinutesInput.focus();
 }
 
 function toggleTimer() {
@@ -250,10 +263,20 @@ async function exitFocusMode() {
 themeButtons.forEach((button) => button.addEventListener("click", () => setTheme(button.dataset.themeChoice)));
 modeButtons.forEach((button) => button.addEventListener("click", () => setMode(button.dataset.modeChoice)));
 presetButtons.forEach((button) => button.addEventListener("click", () => setTimerDuration(Number(button.dataset.duration))));
+customTab.addEventListener("click", openCustomDuration);
 customMinutesInput.addEventListener("change", () => {
   const value = Number(customMinutesInput.value);
   if (!Number.isFinite(value) || value < 1) return;
-  setTimerDuration(Math.min(999, Math.floor(value)) * 60);
+  const seconds = Math.min(999, Math.floor(value)) * 60;
+  state.timerDuration = seconds;
+  state.timerRemaining = seconds * 1000;
+  state.timerRunning = false;
+  state.timerEndAt = 0;
+  saveValue("clockwork-duration", String(seconds));
+  customTab.classList.add("is-selected");
+  customTab.setAttribute("aria-pressed", "true");
+  customDurationField.hidden = false;
+  render();
 });
 startButton.addEventListener("click", () => state.mode === "timer" ? toggleTimer() : toggleStopwatch());
 resetButton.addEventListener("click", resetCurrentTool);
@@ -267,6 +290,13 @@ document.addEventListener("fullscreenchange", () => { if (document.fullscreenEle
 const savedTheme = getSavedValue("clockwork-theme");
 setTheme(savedTheme && themeNames[savedTheme] ? savedTheme : "pixel");
 setMode(modeDetails[state.mode] ? state.mode : "timer");
+const savedDurationIsPreset = [...presetButtons].some((button) => Number(button.dataset.duration) === state.timerDuration);
+if (savedDurationIsPreset) {
+  presetButtons.forEach((button) => button.classList.toggle("is-selected", Number(button.dataset.duration) === state.timerDuration));
+} else {
+  openCustomDuration();
+  customMinutesInput.value = Math.floor(state.timerDuration / 60);
+}
 updateClock();
 render();
 setInterval(() => { updateClock(); render(); }, 100);

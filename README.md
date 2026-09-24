@@ -8,7 +8,7 @@ Open `index.html` directly in a browser. No install or server is required.
 
 ## Included
 
-- Focus timer with 5, 15, 25, and 45 minute presets plus custom durations.
+- Focus timer with 2, 5, 10, 15, 20, and 30 minute presets plus a separate Custom tab.
 - Stopwatch with lap recording and pause/reset controls.
 - Reads the computer's local system time with the browser `Date` API and refreshes every second.
 - Seven visual moods: Pixel arcade, Minecraft, One Piece, Midnight noir, Botanical studio, Soft sunset, and Ocean air.

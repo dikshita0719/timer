@@ -42,11 +42,14 @@
               <div class="tool-display timer-display" id="timer-display">25:00</div>
               <div class="timer-progress"><span id="timer-progress-bar"></span></div>
               <div class="preset-row" aria-label="Timer presets">
-                <button class="preset-button is-selected" type="button" data-duration="1500">25 min</button>
+                <button class="preset-button" type="button" data-duration="120">2 min</button>
                 <button class="preset-button" type="button" data-duration="300">5 min</button>
+                <button class="preset-button" type="button" data-duration="600">10 min</button>
                 <button class="preset-button" type="button" data-duration="900">15 min</button>
-                <button class="preset-button" type="button" data-duration="2700">45 min</button>
-                <label class="custom-duration"><span>Custom</span><input id="custom-minutes" type="number" min="1" max="999" inputmode="numeric" placeholder="min" aria-label="Custom timer minutes" /></label>
+                <button class="preset-button" type="button" data-duration="1200">20 min</button>
+                <button class="preset-button is-selected" type="button" data-duration="1800">30 min</button>
+                <button class="preset-button custom-tab" id="custom-tab" type="button" aria-pressed="false">Custom</button>
+                <label class="custom-duration" hidden><span>Minutes</span><input id="custom-minutes" type="number" min="1" max="999" inputmode="numeric" placeholder="min" aria-label="Custom timer minutes" /></label>
               </div>
             </div>
 

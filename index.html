@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f5f0e8" />
-    <meta name="description" content="A precise local clock with an expressive visual moodboard." />
-    <title>Clockwork - Local time, your way</title>
+    <meta name="description" content="A local clock, timer, and stopwatch with expressive visual moods." />
+    <title>Clockwork - Time, your way</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body data-theme="kawaii">
@@ -15,34 +15,62 @@
           <span class="brand-mark" aria-hidden="true"><span></span></span>
           <span>clockwork</span>
         </a>
-        <div class="topbar-meta">
-          <span class="status-dot" aria-hidden="true"></span>
-          <span>Local time</span>
-          <span class="meta-divider" aria-hidden="true"></span>
-          <span id="today-label">Tuesday, September 24</span>
+        <div class="topbar-tools">
+          <nav class="mode-tabs" aria-label="Time tools">
+            <button class="mode-tab is-active" type="button" data-mode-choice="timer" aria-pressed="true">Timer</button>
+            <button class="mode-tab" type="button" data-mode-choice="stopwatch" aria-pressed="false">Stopwatch</button>
+            <button class="mode-tab" type="button" data-mode-choice="clock" aria-pressed="false">Clock</button>
+          </nav>
+          <button class="topbar-focus" id="fullscreen-button" type="button" title="Open timer focus view">
+            <span class="fullscreen-glyph" aria-hidden="true"></span><span>Focus view</span>
+          </button>
         </div>
       </header>
 
       <main>
         <section class="intro" aria-labelledby="page-title">
-          <div class="eyebrow"><span class="eyebrow-line"></span> Your time, your atmosphere</div>
-          <h1 id="page-title">Time, with a<br /><em>little personality.</em></h1>
-          <p class="intro-copy">An exact local clock dressed in a look that feels like yours. Pick a mood and let the minutes settle in.</p>
+          <div class="eyebrow"><span class="eyebrow-line"></span> Time, your atmosphere</div>
+          <h1 id="page-title">Make time<br /><em>feel yours.</em></h1>
+          <p class="intro-copy">A calm timer for deep work, a stopwatch for momentum, and your exact local clock when you need a glance.</p>
         </section>
 
-        <section class="workspace" aria-label="Clock and appearance controls">
-          <article class="clock-card">
-            <div class="card-topline">
-              <span class="location-label"><span class="location-pin" aria-hidden="true"></span> Your local time</span>
-              <span class="live-label"><span class="live-pulse" aria-hidden="true"></span> Live</span>
+        <section class="workspace" aria-label="Time tools and appearance controls">
+          <article class="tool-card">
+            <div class="tool-heading">
+              <div>
+                <p class="section-kicker" id="tool-kicker">Deep work interval</p>
+                <h2 id="tool-title">Focus timer</h2>
+              </div>
+              <span class="live-label"><span class="live-pulse" aria-hidden="true"></span><span id="tool-status">Ready</span></span>
             </div>
-            <div class="clock-face" aria-live="polite">
+
+            <div class="tool-view timer-view" data-mode-view="timer" aria-live="polite">
+              <div class="tool-display timer-display" id="timer-display">25:00</div>
+              <div class="timer-progress"><span id="timer-progress-bar"></span></div>
+              <div class="preset-row" aria-label="Timer presets">
+                <button class="preset-button is-selected" type="button" data-duration="1500">25 min</button>
+                <button class="preset-button" type="button" data-duration="300">5 min</button>
+                <button class="preset-button" type="button" data-duration="900">15 min</button>
+                <button class="preset-button" type="button" data-duration="2700">45 min</button>
+                <label class="custom-duration"><span>Custom</span><input id="custom-minutes" type="number" min="1" max="999" inputmode="numeric" placeholder="min" aria-label="Custom timer minutes" /></label>
+              </div>
+            </div>
+
+            <div class="tool-view stopwatch-view" data-mode-view="stopwatch" aria-live="polite" hidden>
+              <div class="tool-display stopwatch-display" id="stopwatch-display">00:00.00</div>
+              <div class="lap-list" id="lap-list"><p class="empty-laps">Laps will appear here as you work.</p></div>
+            </div>
+
+            <div class="tool-view clock-view" data-mode-view="clock" aria-live="polite" hidden>
               <div class="clock-time"><span id="hours">09</span><span class="time-colon">:</span><span id="minutes">24</span><span class="time-seconds"><span id="seconds">07</span></span></div>
               <div class="clock-date"><span id="long-date">Tuesday, September 24, 2026</span><span class="date-divider">/</span><span id="timezone">Local time</span></div>
             </div>
-            <div class="clock-footer">
-              <div class="precision-note"><span class="check-icon" aria-hidden="true">+</span><span>Synced to this device</span></div>
-              <span class="format-label">24-hour format</span>
+
+            <div class="tool-actions">
+              <button class="primary-action" id="start-button" type="button"><span class="play-glyph" aria-hidden="true"></span><span id="start-label">Start timer</span></button>
+              <button class="secondary-action" id="lap-button" type="button" hidden><span class="lap-glyph" aria-hidden="true"></span>Lap</button>
+              <button class="secondary-action" id="reset-button" type="button"><span class="reset-glyph" aria-hidden="true"></span>Reset</button>
+              <button class="focus-action" id="focus-button" type="button"><span class="fullscreen-glyph" aria-hidden="true"></span>Full screen timer</button>
             </div>
           </article>
 
@@ -81,19 +109,24 @@
                 <span class="theme-check" aria-hidden="true">+</span>
               </button>
             </div>
-            <div class="panel-note"><span class="spark-icon" aria-hidden="true">*</span><span>The clock keeps ticking while you explore.</span></div>
+            <div class="panel-note"><span class="spark-icon" aria-hidden="true">*</span><span>Your mood stays saved on this device.</span></div>
           </aside>
         </section>
 
-        <section class="details-row" aria-label="Clock details">
-          <div class="detail-item"><span class="detail-index">01</span><div><strong>Always accurate</strong><p>Reads the system time directly, down to the second.</p></div></div>
-          <div class="detail-item"><span class="detail-index">02</span><div><strong>Private by nature</strong><p>Everything runs in your browser. Nothing leaves your device.</p></div></div>
-          <div class="detail-item"><span class="detail-index">03</span><div><strong>Made for focus</strong><p>A calm glanceable display for desks, walls, and tabs.</p></div></div>
+        <section class="details-row" aria-label="Time tool details">
+          <div class="detail-item"><span class="detail-index">01</span><div><strong>Focus without fuss</strong><p>Preset or custom intervals with one clear start button.</p></div></div>
+          <div class="detail-item"><span class="detail-index">02</span><div><strong>Share just the timer</strong><p>Open a clean fullscreen stage for screen sharing or a desk display.</p></div></div>
+          <div class="detail-item"><span class="detail-index">03</span><div><strong>Private by nature</strong><p>Everything runs in your browser and stays on this device.</p></div></div>
         </section>
       </main>
 
       <footer class="footer"><span>clockwork / 2026</span><span>Local by design <span class="footer-star" aria-hidden="true">*</span></span></footer>
     </div>
+    <section class="focus-stage" id="focus-stage" aria-label="Fullscreen focus timer" hidden>
+      <div class="focus-stage-topline"><span class="brand-mark" aria-hidden="true"><span></span></span><span>clockwork / focus</span><button id="exit-focus-button" type="button" title="Exit focus view"><span class="close-glyph" aria-hidden="true"></span><span>Exit</span></button></div>
+      <div class="focus-stage-center"><p>FOCUS TIMER</p><div id="focus-display">25:00</div><span id="focus-status">Ready when you are</span><button class="focus-stage-toggle" id="focus-toggle" type="button">Start timer</button></div>
+      <div class="focus-stage-bottom"><span>Local only</span><span id="focus-theme-label">Kawaii daydream</span></div>
+    </section>
     <script type="module" src="./main.js"></script>
   </body>
 </html>

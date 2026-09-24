@@ -31,7 +31,7 @@ const presetButtons = document.querySelectorAll("[data-duration]");
 const timeFormatter = new Intl.DateTimeFormat(undefined, { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
 const dateFormatter = new Intl.DateTimeFormat(undefined, { weekday: "long", month: "long", day: "numeric", year: "numeric" });
 const timezoneFormatter = new Intl.DateTimeFormat(undefined, { timeZoneName: "short" });
-const themeNames = { pixel: "Pixel arcade", minecraft: "Minecraft", noir: "Midnight noir", botanical: "Botanical studio", sunset: "Soft sunset", ocean: "Ocean air" };
+const themeNames = { pixel: "Pixel arcade", minecraft: "Minecraft", "one-piece": "One Piece", noir: "Midnight noir", botanical: "Botanical studio", sunset: "Soft sunset", ocean: "Ocean air" };
 const modeDetails = {
   timer: { kicker: "Deep work interval", title: "Focus timer" },
   stopwatch: { kicker: "Track the moment", title: "Stopwatch" },

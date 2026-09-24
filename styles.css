@@ -26,6 +26,7 @@ html { min-width: 320px; background: var(--paper); }
 body { margin: 0; min-width: 320px; background: var(--paper); }
 
 body[data-theme="pixel"] { --ink: #1f2a44; --muted: #66738e; --paper: #d9eef4; --card: #fff7c8; --accent: #ff7a45; --accent-deep: #d9473f; --soft-accent: #ffd36a; --line: rgba(31, 42, 68, 0.2); --shadow: 7px 7px 0 rgba(31, 42, 68, 0.14); background-image: linear-gradient(rgba(255,255,255,0.28) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.28) 1px, transparent 1px); background-size: 32px 32px; }
+body[data-theme="minecraft"] { --ink: #26351e; --muted: #65715b; --paper: #b8d9e4; --card: #e8d3a5; --accent: #78a83f; --accent-deep: #4d762c; --soft-accent: #c6dd79; --line: rgba(38, 53, 30, 0.24); --shadow: 6px 6px 0 rgba(38, 53, 30, 0.22); background-image: linear-gradient(#85b957 0 12px, #6d9a3d 12px 16px, transparent 16px), linear-gradient(90deg, rgba(255,255,255,0.16) 1px, transparent 1px), linear-gradient(rgba(255,255,255,0.16) 1px, transparent 1px); background-size: 100% 100%, 32px 32px, 32px 32px; background-position: 0 0, 0 16px, 0 16px; }
 body[data-theme="noir"] { --ink: #ece9e1; --muted: #aaa9a0; --paper: #1d2021; --card: #25292a; --accent: #e6ad70; --accent-deep: #f0c790; --soft-accent: #3a3731; --line: rgba(238, 233, 221, 0.14); --shadow: 0 24px 70px rgba(0, 0, 0, 0.25); }
 body[data-theme="botanical"] { --ink: #273a31; --muted: #718178; --paper: #e9eee7; --card: #f7faf4; --accent: #7eae86; --accent-deep: #4e8260; --soft-accent: #d3e5d1; --line: rgba(39, 58, 49, 0.14); }
 body[data-theme="sunset"] { --ink: #442e2a; --muted: #92736b; --paper: #f7e8dc; --card: #fff8f0; --accent: #d98a5f; --accent-deep: #b65b46; --soft-accent: #f3c6a9; --line: rgba(68, 46, 42, 0.14); }
@@ -76,6 +77,8 @@ h2 { margin: 0; font-size: 21px; font-weight: 700; letter-spacing: -0.03em; }
 .theme-swatch { width: 37px; height: 37px; flex: 0 0 37px; display: grid; place-items: center; border-radius: 50%; overflow: hidden; position: relative; }
 .theme-swatch span { width: 14px; height: 14px; border-radius: 50%; background: rgba(255,255,255,0.6); box-shadow: 8px 5px 0 -3px rgba(255,255,255,0.35), -6px -5px 0 -4px rgba(255,255,255,0.75); }
 .swatch-pixel { background: linear-gradient(135deg, #ff7a45 0 50%, #5fc6d0 50%); }
+.swatch-minecraft { background: linear-gradient(#79a943 0 38%, #6c472b 38% 100%); }
+.swatch-minecraft span { border-radius: 1px; background: #8e603a; box-shadow: 8px 5px 0 #5a8737, -7px -5px 0 #9cc75a; }
 .swatch-noir { background: linear-gradient(135deg, #262a2a, #c88d64); }
 .swatch-botanical { background: linear-gradient(135deg, #c5ddc2, #779c7b); }
 .swatch-sunset { background: linear-gradient(135deg, #fac69f, #bd6d58); }
@@ -205,3 +208,7 @@ body[data-theme="pixel"] .theme-option.is-active { border-width: 2px; }
 body[data-theme="pixel"] .primary-action { box-shadow: 3px 3px 0 var(--ink); }
 body[data-theme="pixel"] .primary-action:hover { box-shadow: 1px 1px 0 var(--ink); }
 body[data-theme="pixel"] .focus-stage { background-image: linear-gradient(rgba(255,255,255,0.28) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.28) 1px, transparent 1px); background-size: 32px 32px; }
+body[data-theme="minecraft"] .tool-card, body[data-theme="minecraft"] .appearance-panel { border-width: 2px; border-radius: 2px; }
+body[data-theme="minecraft"] .primary-action { box-shadow: 3px 3px 0 var(--ink); }
+body[data-theme="minecraft"] .primary-action:hover { box-shadow: 1px 1px 0 var(--ink); }
+body[data-theme="minecraft"] .focus-stage { background-image: linear-gradient(#85b957 0 18px, #6d9a3d 18px 23px, transparent 23px), linear-gradient(90deg, rgba(255,255,255,0.16) 1px, transparent 1px), linear-gradient(rgba(255,255,255,0.16) 1px, transparent 1px); background-size: 100% 100%, 32px 32px, 32px 32px; background-position: 0 0, 0 23px, 0 23px; }
